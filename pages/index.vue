@@ -7,7 +7,7 @@
         </v-card-title>
         <v-card-text>
           <p>
-            Wikiを基に左のメニューから生成したいイベントのページに飛んでください。
+            Wikiを基にメニューから生成したいイベントのページに飛んでください。
           </p>
         </v-card-text>
         <v-card-actions>

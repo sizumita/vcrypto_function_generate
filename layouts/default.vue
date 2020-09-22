@@ -40,13 +40,18 @@ export default {
   data() {
     return {
       clipped: false,
-      drawer: true,
+      drawer: false,
       fixed: false,
       items: [
         {
           icon: 'mdi-apps',
           title: 'Welcome',
           to: '/',
+        },
+        {
+          icon: 'mdi-chart-bubble',
+          title: 'Message Send',
+          to: '/message_send',
         },
       ],
     }
