@@ -1,6 +1,6 @@
 <template>
   <v-container fluid>
-    <Terms />
+    <MessageSendTerm />
     <v-card>
       <v-card-title>実行内容</v-card-title>
     </v-card>
@@ -11,11 +11,11 @@
 </template>
 
 <script>
-import Terms from '@/components/terms/message_send.vue'
+import MessageSendTerm from '@/components/terms/message_send_term.vue'
 
 export default {
   comments: {
-    Terms,
+    MessageSendTerm,
   },
   data() {
     return {
