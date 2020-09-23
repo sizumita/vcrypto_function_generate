@@ -1,16 +1,12 @@
 <template>
   <v-card>
     <v-card-title>イベントの条件</v-card-title>
-    <div class="text-center">
-      <v-btn class="mx-2" fab small dark color="indigo" @click="terms.shift()">
-        <v-icon dark>mdi-minus</v-icon>
-      </v-btn>
-    </div>
+    <div class="text-center"></div>
     <v-list v-model="terms">
       <v-list-item v-for="(term, i) in terms" :key="i">
         <v-container fluid>
           <v-row>
-            <v-col cols="5">
+            <v-col>
               <v-combobox
                 v-model="terms[i].lhs"
                 :items="lhsList[term.type]"
@@ -20,7 +16,7 @@
                 solo
               ></v-combobox>
             </v-col>
-            <v-col cols="2">
+            <v-col>
               <v-combobox
                 v-model="terms[i].symbol"
                 :items="symbols[term.type]"
@@ -31,7 +27,7 @@
                 solo
               ></v-combobox>
             </v-col>
-            <v-col cols="5">
+            <v-col>
               <v-combobox
                 v-model="terms[i].rhs"
                 :items="rhsList[term.type]"
@@ -41,8 +37,19 @@
                 solo
               ></v-combobox>
             </v-col>
+            <v-col cols="1">
+              <v-btn
+                class="mx-2"
+                fab
+                small
+                dark
+                color="indigo"
+                @click="terms = terms.filter((_, index) => index !== i)"
+              >
+                <v-icon dark>mdi-minus</v-icon>
+              </v-btn>
+            </v-col>
           </v-row>
-          <p>{{ value }}</p>
         </v-container>
       </v-list-item>
     </v-list>
