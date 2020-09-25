@@ -4,9 +4,10 @@
     <div class="text-center"></div>
     <v-list v-model="terms">
       <v-list-item v-for="(term, i) in terms" :key="i">
-        <v-container fluid>
-          <v-row>
-            <v-col>
+        <v-card color="blue-grey darken-3" class="mb-4">
+          <h2 class="mt-2 ml-2">{{ term.name }}の条件</h2>
+          <v-row class="ma-2">
+            <v-col cols="12">
               <v-combobox
                 v-model="terms[i].lhs"
                 :items="lhsList[term.type]"
@@ -16,7 +17,7 @@
                 solo
               ></v-combobox>
             </v-col>
-            <v-col>
+            <v-col cols="12">
               <v-combobox
                 v-model="terms[i].symbol"
                 :items="symbols[term.type]"
@@ -27,7 +28,7 @@
                 solo
               ></v-combobox>
             </v-col>
-            <v-col>
+            <v-col cols="12">
               <v-combobox
                 v-model="terms[i].rhs"
                 :items="rhsList[term.type]"
@@ -37,7 +38,7 @@
                 solo
               ></v-combobox>
             </v-col>
-            <v-col cols="1">
+            <v-col cols="12">
               <v-btn
                 class="mx-2"
                 fab
@@ -50,7 +51,7 @@
               </v-btn>
             </v-col>
           </v-row>
-        </v-container>
+        </v-card>
       </v-list-item>
     </v-list>
     <div class="text-center">
@@ -107,31 +108,43 @@
 const lhsList = {
   user: ['メッセージの送信者', 'サーバーオーナー', 'ランダムなユーザー'],
   channelName: ['メッセージが送信されたチャンネル'],
+  channel_id: ['メッセージが送信されたチャンネル'],
+  message_id: ['イベントが発生するメッセージ'],
 }
 
 const lhsLabels = {
-  user: '対象ユーザー',
-  channelName: '対象のチャンネル',
+  user: '対象ユーザーを選択',
+  channelName: '対象のチャンネルを選択',
+  channel_id: '対象のチャンネルを選択',
+  message_id: '対象のメッセージを選択',
 }
 
 const symbols = {
   user: ['=='],
   channelName: ['==', '!=', 'in', 'starts', 'ends'],
+  channel_id: ['=='],
+  message_id: ['=='],
 }
 
 const rhsList = {
   user: ['メッセージの送信者', 'サーバーオーナー', 'ランダムなユーザー'],
   channelName: [],
+  channel_id: [],
+  message_id: [],
 }
 
 const rhsLabels = {
   user: 'ユーザーidもしくは選択',
-  channelName: 'チャンネル名',
+  channelName: 'チャンネル名を入力',
+  channel_id: 'チャンネルidを入力',
+  message_id: 'メッセージidを入力',
 }
 
 const types = [
   { name: 'ユーザーの種類', type: 'user' },
   { name: 'チャンネル名', type: 'channelName' },
+  { name: 'チャンネルid', type: 'channel_id' },
+  { name: 'メッセージid', type: 'message_id' },
 ]
 
 export default {
